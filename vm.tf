@@ -71,15 +71,6 @@ resource "random_id" "randomId" {
     byte_length = 8
 }
 
-# Create storage account for boot diagnostics
-resource "azurerm_storage_account" "linuxstorageaccount" {
-    name                        = "linsacc"
-  location            = azurerm_resource_group.rg1.location
-  resource_group_name = azurerm_resource_group.rg1.name
-    account_tier                = "Standard"
-    account_replication_type    = "RAGRS"
-}
-
 # Create (and display) an SSH key
 resource "tls_private_key" "vmlu01_ssh" {
   algorithm = "RSA"
