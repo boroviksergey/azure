@@ -1,7 +1,7 @@
 # Create a resource group vor Kubernetes
  resource "azurerm_resource_group" "rg"  {
  name     = "kuber_rg"
-  location = "northeurope"
+  location = "westus"
 }
 
 resource "azurerm_kubernetes_cluster" "cluster" {
@@ -13,7 +13,7 @@ resource "azurerm_kubernetes_cluster" "cluster" {
   default_node_pool {
     name       = "default"
     node_count = "2"
-    vm_size    = "standard_d2_v2"
+    vm_size    = "standard_b2s"
   }
 
   identity {
