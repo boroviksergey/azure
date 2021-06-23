@@ -16,6 +16,9 @@ provider "azurerm" {
 resource "azurerm_resource_group" "rg1" {
     name     = "Linux"
     location = "eastus"
+    lifecycle {
+    prevent_destroy = true
+  }
 }
 
 # Create storage account for boot diagnostics
@@ -31,4 +34,7 @@ resource "azurerm_storage_account" "linuxstorageaccount" {
 resource "azurerm_storage_container" "linuxstoragecontainer" {
   name   = "tfcontainer"
   storage_account_name = azurerm_storage_account.linuxstorageaccount.name
+    lifecycle {
+    prevent_destroy = true
+  }
 }
