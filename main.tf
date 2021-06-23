@@ -29,4 +29,8 @@ resource "azurerm_storage_account" "linuxstorageaccount" {
 }
 
 # Create blob container
-az storage container create --name $CONTAINER_NAME --account-name $STORAGE_ACCOUNT_NAME --account-key $ACCOUNT_KEY
+resource "azurerm_storage_container" "linuxstoragecontainer" {
+  name   = "tfcontainer"
+  storage_account_name = azurerm_storage_account.linuxstorageaccount.name
+}
+
