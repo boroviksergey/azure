@@ -12,7 +12,6 @@ provider "azurerm" {
   features {}
 }
 
-
 # Create a resource group vor app
 resource "azurerm_resource_group" "rg1" {
     name     = "Linux"
@@ -33,4 +32,3 @@ resource "azurerm_storage_container" "linuxstoragecontainer" {
   name   = "tfcontainer"
   storage_account_name = azurerm_storage_account.linuxstorageaccount.name
 }
-
