@@ -62,14 +62,14 @@ resource "azurerm_network_interface_security_group_association" "example" {
 }
 
 # Generate random text for a unique storage account name
-resource "random_id" "randomId" {
-    keepers = {
+#resource "random_id" "randomId" {
+#    keepers = {
         # Generate a new ID only when a new resource group is defined
-  resource_group_name = azurerm_resource_group.rg1.name
-    }
-
-    byte_length = 8
-}
+#  resource_group_name = azurerm_resource_group.rg1.name
+#    }
+#
+#    byte_length = 8
+#}
 
 # Create (and display) an SSH key
 resource "tls_private_key" "vmlu01_ssh" {
