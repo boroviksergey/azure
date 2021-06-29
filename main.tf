@@ -6,12 +6,6 @@ terraform {
       version = "=2.63.0"
     }
   }
-  backend "azurerm" {
-    resource_group_name  = "Linux"
-    storage_account_name = "linsacc"
-    container_name       = "tfcontainer"
-    key                  = "terraform.tfstate"
-  }
 }
 
 
