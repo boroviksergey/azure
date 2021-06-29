@@ -10,7 +10,7 @@ terraform {
     resource_group_name  = "Linux"
     storage_account_name = "linsacc"
     container_name       = "tfcontainer"
-    key                  = "prod.terraform.tfstate"
+    key                  = "terraform.tfstate"
   }
 }
 
