@@ -6,7 +6,15 @@ terraform {
       version = "=2.63.0"
     }
   }
+  backend "azurerm" {
+    resource_group_name  = "Linux"
+    storage_account_name = "linsacc"
+    container_name       = "tfcontainer"
+    key                  = "prod.terraform.tfstate"
+  }
 }
+
+
 
 provider "azurerm" {
   features {}
@@ -21,20 +29,3 @@ resource "azurerm_resource_group" "rg1" {
   }
 }
 
-# Create storage account for boot diagnostics
-resource "azurerm_storage_account" "linuxstorageaccount" {
-    name                        = "linsacc"
-  location            = azurerm_resource_group.rg1.location
-  resource_group_name = azurerm_resource_group.rg1.name
-    account_tier                = "Standard"
-    account_replication_type    = "RAGRS"
-}
-
-# Create blob container
-resource "azurerm_storage_container" "linuxstoragecontainer" {
-  name   = "tfcontainer"
-  storage_account_name = azurerm_storage_account.linuxstorageaccount.name
-    lifecycle {
-    prevent_destroy = true
-  }
-}
